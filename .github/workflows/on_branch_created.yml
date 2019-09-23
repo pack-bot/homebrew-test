@@ -2,8 +2,6 @@ name: On branch created
 
 on:
   create:
-    branches:
-      - "*"
     branches-ignore:
       - "pr-*"
 
