@@ -1,14 +1,15 @@
 name: On branch created
 
-on:
-  create:
-    branches: "*"
+on: create
 
 jobs:
   main:
     runs-on: ubuntu-latest
-    if: github.ref != "pr-*"
     steps:
+      - name: Check if not branch pr-*
+        uses: actions/bin/filter@master
+        with:
+          args: not branch pr-*
       - name: Create pull request
         run: |
           cat $GITHUB_EVENT_PATH
