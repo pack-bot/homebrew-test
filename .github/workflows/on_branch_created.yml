@@ -1,4 +1,4 @@
-name: On branch creation
+name: On branch created
 
 on:
   create:
@@ -13,6 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create pull request
-        uses: docker://alpine:latest
         run: |
           cat $GITHUB_EVENT_PATH

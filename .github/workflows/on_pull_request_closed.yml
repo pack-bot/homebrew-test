@@ -10,6 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delete merge branch
-        uses: docker://alpine:latest
         run: |
           cat $GITHUB_EVENT_PATH
