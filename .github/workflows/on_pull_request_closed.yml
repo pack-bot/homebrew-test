@@ -9,6 +9,15 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: Delete merge branch
-        run: |
-          cat $GITHUB_EVENT_PATH
+      - name: Delete pr-* branch
+        uses: dawidd6/action-delete-branch@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: pr-PR_NUMBER
+      - name: Delete pr head branch
+        uses: dawidd6/action-delete-branch@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: PR_HEAD_BRANCH
