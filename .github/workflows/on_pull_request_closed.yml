@@ -3,7 +3,7 @@ name: On pull request closed
 on:
   pull_request:
     types:
-      - "closed"
+      - closed
 
 jobs:
   main:
