@@ -3,7 +3,7 @@ name: On branch created
 on:
   create:
     branches:
-      - !pr-*
+      - '!pr-*'
 
 jobs:
   main:
