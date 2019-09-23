@@ -2,8 +2,9 @@ name: On branch created
 
 on:
   create:
-    branches-ignore:
-      - "pr-*"
+    branches:
+      - "*"
+      - "!pr-*"
 
 jobs:
   main:
