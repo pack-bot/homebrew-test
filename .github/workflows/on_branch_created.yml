@@ -2,11 +2,12 @@ name: On branch created
 
 on:
   create:
-    branches-ignore:
-      - "master"
-      - "pr-*"
-    tags-ignore:
+    branches:
       - "*"
+      - "!master"
+      - "!pr-*"
+    tags:
+      - "!*"
 
 jobs:
   main:
