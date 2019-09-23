@@ -2,12 +2,12 @@ name: On branch created
 
 on:
   create:
-    branches:
-      - hello
+    branches: "*"
 
 jobs:
   main:
     runs-on: ubuntu-latest
+    if: github.ref != "pr-*"
     steps:
       - name: Create pull request
         run: |
