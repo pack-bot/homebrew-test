@@ -1,0 +1,15 @@
+name: On pull request closed
+
+on:
+  pull_request:
+    types:
+      - "closed"
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete merge branch
+        uses: docker://alpine:latest
+        run: |
+          cat $GITHUB_EVENT_PATH
