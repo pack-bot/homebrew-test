@@ -4,10 +4,8 @@ on:
   create:
     branches:
       - "*"
-      - "!master"
-      - "!pr-*"
-    tags:
-      - "!*"
+    branches-ignore:
+      - "pr-*"
 
 jobs:
   main:
