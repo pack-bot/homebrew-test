@@ -5,12 +5,10 @@ on: create
 jobs:
   main:
     runs-on: ubuntu-latest
+    if: !startsWith(github.event.ref, 'pr-') && github.event.ref_type == 'branch'
     steps:
-      - name: Check if not branch pr-*
-        uses: actions/bin/filter@master
-        with:
-          args: not branch pr-*
       - name: Create PR
-        uses: dawidd6/action-auto-pull-request@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: dawidd6/action-create-pull-request@v1.0.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          head_branch: ${{ github.event.ref }}

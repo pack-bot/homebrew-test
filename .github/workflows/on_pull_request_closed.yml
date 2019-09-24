@@ -10,16 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delete pr-* branch
-        uses: dawidd6/action-delete-branch@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: dawidd6/action-delete-branch@v1.0.1
         with:
-          branch: pr-PR_NUMBER
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: pr-${{ github.event.pull_request.number }}
           be_kind: true
-      - name: Delete pr head branch
-        uses: dawidd6/action-delete-branch@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Delete head branch
+        uses: dawidd6/action-delete-branch@v1.0.1
         with:
-          branch: PR_HEAD_BRANCH
-          be_kind: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.event.pull_request.head.ref }}
