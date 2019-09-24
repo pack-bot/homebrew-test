@@ -10,6 +10,7 @@ jobs:
         uses: actions/bin/filter@master
         with:
           args: not branch pr-*
-      - name: Create pull request
-        run: |
-          cat $GITHUB_EVENT_PATH
+      - name: Create PR
+        uses: dawidd6/action-auto-pull-request@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
