@@ -5,7 +5,7 @@ on: create
 jobs:
   main:
     runs-on: ubuntu-latest
-    if: !startsWith(github.event.ref, 'pr-') && github.event.ref_type == 'branch'
+    if: '!startsWith(github.event.ref, pr-)' && github.event.ref_type == 'branch'
     steps:
       - name: Create PR
         uses: dawidd6/action-create-pull-request@v1.0.1
