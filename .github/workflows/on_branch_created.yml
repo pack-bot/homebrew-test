@@ -12,5 +12,5 @@ jobs:
           args: not branch pr-*
       - name: Create PR
         uses: dawidd6/action-auto-pull-request@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
