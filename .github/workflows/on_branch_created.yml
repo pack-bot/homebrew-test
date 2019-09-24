@@ -5,6 +5,7 @@ on: create
 jobs:
   main:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     if: startsWith(github.event.ref, 'pr-') == false && github.event.ref_type == 'branch'
     steps:
       - name: Create PR
