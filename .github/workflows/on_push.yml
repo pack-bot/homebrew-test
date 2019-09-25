@@ -9,5 +9,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Install neofetch
+        env:
+          HOMEBREW_COLOR: 1
         run: |
           brew install neofetch
