@@ -11,11 +11,7 @@ jobs:
         os:
           - ubuntu-18.04
           - macos-10.14
-        container:
-          - linuxbrew/brew
-          - ""
     runs-on: ${{ matrix.os }}
-    container: ${{ matrix.container }}
     steps:
       - name: brew config
         env:
