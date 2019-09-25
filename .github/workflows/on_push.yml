@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     container: linuxbrew/brew
     steps:
-      - name: Install neofetch
+      - name: brew config
         env:
           HOMEBREW_COLOR: 1
         run: |
