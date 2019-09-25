@@ -8,13 +8,14 @@ jobs:
   main:
     strategy:
       matrix:
-        obj:
-          - os: ubuntu-18.04
-            container: linuxbrew/brew
-          - os: macos-10.14
-            container:
-    runs-on: ${{ matrix.obj.os }}
-    container: ${{ matrix.obj.container }}
+        os:
+          - ubuntu-18.04
+          - macos-10.14
+        container:
+          - linuxbrew/brew
+          - ""
+    runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
     steps:
       - name: brew config
         env:
