@@ -8,9 +8,5 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: with env
-        run: echo $GITHUB_ACTIONS
-      - name: without env
-        run: GITHUB_ACTIONS= echo $GITHUB_ACTIONS
-      - name: without env 2
-        run: env -u GITHUB_ACTIONS echo $GITHUB_ACTIONS
+      - name: print
+        run: echo ${{github.event}}
