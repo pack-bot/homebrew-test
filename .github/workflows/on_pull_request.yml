@@ -1,0 +1,26 @@
+name: On pull request
+
+on: pull_request
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - name: print
+        run: |
+          echo $GITHUB_ACTIONS
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_BASE_REF
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
+  ubuntu:
+    runs-on: ubuntu-latest
+    container: linuxbrew/brew
+    steps:
+      - name: print
+        run: |
+          echo $GITHUB_ACTIONS
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_BASE_REF
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
