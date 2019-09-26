@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print
-        run: echo ${{github.event}}
+        run: cat $GITHUB_EVENT_PATH
