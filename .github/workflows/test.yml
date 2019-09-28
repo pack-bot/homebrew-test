@@ -11,4 +11,4 @@ jobs:
       - run: echo "::set-output name=sha::$GITHUB_SHA"
         id: sha
       - run: echo ${{steps.sha.outputs.sha}}
-        if: ${{steps.sha.outputs.sha}} != ''
+        if: steps.sha.outputs.sha != ''
