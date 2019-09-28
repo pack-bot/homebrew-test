@@ -8,13 +8,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "::set-output name=sha::$GITHUB_SHA"
-        id: sha
-      - run: echo ${{steps.sha.outputs.sha}}
-        if: steps.sha.outputs.sha != ''
-  testagain:
-    runs-on: ubuntu-latest
-    needs:
-      - test
-    steps:
-      - run: echo ${{jobs.test.steps.sha.outputs.sha}}
+      - run: |
+          JSON='{"key":"val"}'
+          echo "::set-output name=json::$JSON"
+        id: json
+      - run: |
+          echo ${{steps.json.outputs.json}}
+          echo ${{steps.json.outputs.json.key}}
+ 
