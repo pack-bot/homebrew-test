@@ -3,15 +3,12 @@ name: Test
 on:
   push:
     branches: master
-  issues:
-    types:
-      - closed
-  pull_request:
-    types:
-      - closed
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: cat $GITHUB_EVENT_PATH
+      - run: echo "::set-output name=sha::$GITHUB_SHA"
+        id: sha
+      - run: echo ${{steps.sha.outputs.sha}}
+        if: ${{steps.sha.outputs.sha}} != ''
