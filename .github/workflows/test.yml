@@ -12,3 +12,9 @@ jobs:
         id: sha
       - run: echo ${{steps.sha.outputs.sha}}
         if: steps.sha.outputs.sha != ''
+  testagain:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+    steps:
+      - run: echo ${{jobs.test.steps.sha.outputs.sha}}
