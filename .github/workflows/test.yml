@@ -1,10 +1,13 @@
 name: Test
 
-on: pull_request
+on:
+  pull_request:
+    types:
+      - closed
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{secrets.PRIVATE}}
+          echo ${{github.event.number}}
