@@ -1,13 +1,13 @@
 name: Test
 
 on:
-  pull_request:
-    types:
-      - closed
+  schedule:
+    - cron: '*/10 * * * *'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{github.event.number}}
+          echo ${{github.event}}
+          cat $GITHUB_EVENT_PATH
