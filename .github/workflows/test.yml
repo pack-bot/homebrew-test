@@ -2,11 +2,8 @@ name: Test
 
 on:
   pull_request:
-    types:
-      - closed
-  issues:
-    types:
-      - closed
+    branches: master
+    types: closed
 
 jobs:
   test:
