@@ -1,12 +1,22 @@
 name: Test
 
 on:
-  pull_request:
-    branches: master
-    types: closed
+  push:
+    branches:
+      - master
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: cat $GITHUB_EVENT_PATH
+      - uses: dawidd6/action-closing-commit@master
+        id: closing
+      - uses: dawidd6/action-delete-branch@master
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          numbers: ${{steps.closing.outputs.numbers}}
+      - uses: dawidd6/action-delete-branch@master
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          branches: ${{steps.closing.outputs.numbers}}
+          prefix: pr-
