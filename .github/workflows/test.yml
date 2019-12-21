@@ -5,12 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker
-    env:
-      DOCKER_CLI_EXPERIMENTAL: enabled
     steps:
       - uses: actions/checkout@v1
-      - run: wget -O ~/.docker/cli-plugins/docker-buildx https://github.com/docker/buildx/releases/download/v0.3.1/buildx-v0.3.1.linux-amd64
+      - run: wget -O /usr/bin/buildx https://github.com/docker/buildx/releases/download/v0.3.1/buildx-v0.3.1.linux-amd64
       - run: docker run --rm --privileged docker/binfmt:66f9012c56a8316f9244ffd7622d7c21c1f6f28d
-      - run: docker buildx create --use --name builder
-      - run: docker buildx inspect --bootstrap builder
-      - run: docker buildx build --platform=linux/amd64,linux/arm64,linux/arm -t ruby-octokit .
+      - run: buildx create --use --name builder
+      - run: buildx inspect --bootstrap builder
+      - run: buildx build --platform=linux/amd64,linux/arm64,linux/arm -t ruby-octokit .
