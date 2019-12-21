@@ -1,22 +1,20 @@
-name: Test
-
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: docker
+    env:
+      DOCKER_CLI_EXPERIMENTAL: enabled
+      DOCKER_BUILDKIT: 1
     steps:
-      - uses: dawidd6/action-closing-commit@master
-        id: closing
-      - uses: dawidd6/action-delete-branch@master
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          numbers: ${{steps.closing.outputs.numbers}}
-      - uses: dawidd6/action-delete-branch@master
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          branches: ${{steps.closing.outputs.numbers}}
-          prefix: pr-
+      - uses: actions/checkout@v1
+      - run: |
+          docker build --platform=local -o . git://github.com/docker/buildx
+          mkdir -p ~/.docker/cli-plugins
+          mv buildx ~/.docker/cli-plugins/docker-buildx
+          docker run --rm --privileged docker/binfmt:66f9012c56a8316f9244ffd7622d7c21c1f6f28d
+          docker buildx ls
+      - run: |
+          ls -al /proc/sys/fs/binfmt_misc
