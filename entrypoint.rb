@@ -16,7 +16,7 @@ added = files.any? do |file|
   next unless file["status"] == "added"
   next unless file["filename"].start_with?("Formula/")
 
-  return true
+  break true
 end
 
 if added
