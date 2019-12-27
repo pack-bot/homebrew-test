@@ -21,7 +21,7 @@ end
 
 if added
   puts "==> New formula PR"
-  client.update_issue(repo, number, :labels => "new formula,")
+  client.update_issue(repo, number, :labels => ["new formula"])
 else
   puts "==> Not a new formula PR"
 end
