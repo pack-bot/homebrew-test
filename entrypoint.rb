@@ -11,6 +11,7 @@ json = File.read(path)
 event = JSON.parse(json)
 client = Octokit::Client.new(:access_token => token)
 number = event["number"]
+puts json
 added = event["commits"].any? do |commit|
   commit = client.commit(repo, commit["id"])
   added = commit["files"].any? do |file|
