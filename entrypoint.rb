@@ -11,17 +11,12 @@ json = File.read(path)
 event = JSON.parse(json)
 client = Octokit::Client.new(:access_token => token)
 number = event["number"]
-puts json
-added = event["commits"].any? do |commit|
-  commit = client.commit(repo, commit["id"])
-  added = commit["files"].any? do |file|
-    next unless file["status"] == "added"
-    next unless file["filename"].start_with?("Formula/")
+files = client.pull_request_files(repo, number)
+added = files.any? do |file|
+  next unless file["status"] == "added"
+  next unless file["filename"].start_with?("Formula/")
 
-    return true
-  end
-
-  return true if added
+  return true
 end
 
 if added
