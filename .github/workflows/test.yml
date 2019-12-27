@@ -3,7 +3,7 @@ name: Label new formula PRs
 on:
   pull_request:
     types:
-      - created
+      - opened
 
 jobs:
   test:
