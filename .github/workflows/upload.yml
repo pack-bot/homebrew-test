@@ -14,7 +14,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: bottle-${{github.event.pull_request.number}}
-          path: bottle
+          path: ./
       - name: Print
         run: |
           cat $GITHUB_EVENT_PATH
