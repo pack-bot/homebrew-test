@@ -1,0 +1,17 @@
+name: Build bottles
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: |
+          mkdir bottle
+          echo ${{github.event.pull_request.head.sha}} > bottle/file
+      - name: Upload
+        uses: actions/upload-artifact@v1
+        with:
+          name: bottle-${{github.event.pull_request.number}}
+          path: bottle
