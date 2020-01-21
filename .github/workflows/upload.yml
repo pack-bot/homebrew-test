@@ -6,16 +6,18 @@ on:
       - closed
 
 jobs:
-  build:
+  upload:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
       - name: Download
-        uses: actions/upload-artifact@v1
+        uses: actions/download-artifact@v1
         with:
           name: bottle-${{github.event.pull_request.number}}
           path: ./
       - name: Print
         run: |
           cat $GITHUB_EVENT_PATH
+          ls -R
+          ls -R
           ls -R
