@@ -1,4 +1,4 @@
-name: Build bottles
+name: ${{github.repository}}
 
 on: pull_request
 
