@@ -6,6 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print
+      - name: ${{github.repository}}
         run: |
           cat $GITHUB_EVENT_PATH
