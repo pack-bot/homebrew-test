@@ -7,5 +7,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ${{github.repository}}
-        run: |
-          cat $GITHUB_EVENT_PATH
