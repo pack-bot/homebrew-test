@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ${{github.repository}}
-        run: echo
+        run: cat ${{github.sha}}
