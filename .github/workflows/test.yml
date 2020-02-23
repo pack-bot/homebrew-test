@@ -1,10 +1,13 @@
 name: Test
 
-on: push
+on:
+  issue_comment:
+    types:
+      - created
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: ${{github.repository}}
-        run: cat ${{github.sha}}
+      - name: Print
+        run: cat $GITHUB_EVENT_PATH
