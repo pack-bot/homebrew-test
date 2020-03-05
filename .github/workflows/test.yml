@@ -1,15 +1,14 @@
-name: Test
+name: Close Pull Request
 
 on:
-  push:
-    tags:
-      - '*'
+  pull_request:
+    types:
+      - opened
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - id: tag
-        run: |
-          echo "::set-output name=tag::${GITHUB_REF##*/}"
-      - run: echo ${{steps.tag.outputs.tag}}
+    - uses: superbrothers/close-pull-request@v2
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
