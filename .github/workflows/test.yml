@@ -9,5 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: cat $GITHUB_EVENT_PATH
-      - run: env
+      - id: tag
+        run: |
+          echo "::set-output name=tag::${GITHUB_REF##*/}"
+      - run: echo ${{steps.tag.outputs.tag}}
