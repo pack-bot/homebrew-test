@@ -9,6 +9,8 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-    - uses: superbrothers/close-pull-request@v2
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Delete PR head branch
+      uses: dawidd6/action-delete-branch@master
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        numbers: ${{github.event.pull_request.number}}
