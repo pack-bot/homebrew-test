@@ -1,9 +1,12 @@
 name: Test
 
-on: push
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - run: env
+      - run: cat $GITHUB_EVENT_PATH
