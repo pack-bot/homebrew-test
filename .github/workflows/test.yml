@@ -1,0 +1,13 @@
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo test > ~/test
+      - uses: traversals-analytics-and-intelligence/file-reader-action@master
+        id: file
+        with:
+          file: ~/test
+      - run: echo ${{steps.file.outputs.content}}
+
