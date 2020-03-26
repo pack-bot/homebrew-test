@@ -4,13 +4,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $HOME
-      - run: echo $PWD
-      - run: echo test > ~/test
-      - run: ls ~
-      - uses: traversals-analytics-and-intelligence/file-reader-action@master
-        id: file
-        with:
-          file: ~/test
-      - run: echo ${{steps.file.outputs.content}}
+      - run: |
+          echo $PWD
+          echo $RUNNER_WORKSPACE
+          echo $GITHUB_WORKSPACE
 
