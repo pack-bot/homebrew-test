@@ -4,8 +4,5 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo $PWD
-          echo $RUNNER_WORKSPACE
-          echo $GITHUB_WORKSPACE
+      - uses: Homebrew/actions/cancel-previous-runs@add-cancel-previous-runs
 
