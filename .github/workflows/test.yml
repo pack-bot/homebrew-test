@@ -1,9 +1,0 @@
-on: push
-
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Homebrew/actions/cancel-previous-runs@add-cancel-previous-runs
-
