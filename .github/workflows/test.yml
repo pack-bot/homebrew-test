@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: whoami
-      - run: cat ~/.docker/config.json
-      - run: sudo /root/.docker/config.json
+      # - run: cat ~/.docker/config.json
+      - run: sudo cat /root/.docker/config.json
