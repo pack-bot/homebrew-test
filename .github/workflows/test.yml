@@ -1,12 +1,14 @@
 name: Test
 
 on:
-  issues:
-    types:
-      - labeled
+  push:
+    branches:
+      - master
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: cat $GITHUB_EVENT_PATH
+      - run: whoami
+      - run: cat ~/.docker/config.json
+      - run: sudo /root/.docker/config.json
