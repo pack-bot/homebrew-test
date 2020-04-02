@@ -13,7 +13,7 @@ jobs:
       - run: docker version
       - run: |
           mkdir ~/.docker
-          echo '{"experimental":“enabled”}' > ~/.docker/config.json
+          echo -n '{"experimental":“enabled”}' > ~/.docker/config.json
       - run: docker
       - run: docker version
       - run: docker buildx
