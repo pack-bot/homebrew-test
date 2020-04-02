@@ -9,6 +9,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: whoami
-      # - run: cat ~/.docker/config.json
-      - run: sudo cat /root/.docker/config.json
+      - run: docker
+      - run: docker version
+      - run: |
+          mkdir ~/.docker
+          echo '{"experimental":“enabled”}' > ~/.docker/config.json
+      - run: docker
+      - run: docker version
+      - run: docker buildx
