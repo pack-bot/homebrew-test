@@ -5,7 +5,7 @@ on: pull_request
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: !contains(github.event.pull_request.labels.*.name, 'bug')
+    if: !(contains(github.event.pull_request.labels.*.name, 'bug'))
     steps:
       - run: cat $GITHUB_EVENT_PATH
       - run: echo ${{contains(github.event.pull_request.labels.*.name, 'bug')}}
