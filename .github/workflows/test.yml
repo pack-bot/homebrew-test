@@ -1,21 +1,10 @@
 name: Test
 
-on:
-  push:
-    branches:
-      - master
+on: pull_request
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: docker
-      - run: docker version
-      - run: |
-          mkdir ~/.docker
-          echo '{' > ~/.docker/config.json
-          echo '  "experimental": “enabled”' >> ~/.docker/config.json
-          echo '}' >> ~/.docker/config.json
-      - run: docker
-      - run: docker version
-      - run: docker buildx
+      - run: cat $GITHUB_EVENT_PATH
+      - run: echo ${{github.event.pull_request.labels}}
