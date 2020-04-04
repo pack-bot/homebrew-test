@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: cat $GITHUB_EVENT_PATH
-      - run: echo ${{contains(github.event.pull_request.labels.*.name, 'duplicate')}}
+      - run: echo ${{contains(github.event.pull_request.labels.*.name, 'bug')}}
