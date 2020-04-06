@@ -1,11 +1,19 @@
 name: Test
 
-on: pull_request
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'bug') == false
+    if: >
+      github.event.pull_request &&
+      github.event.pull_request.body == '\upload' && (
+        github.event.comment.author_association == 'COLLABORATOR' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'OWNER'
+      )
     steps:
       - run: cat $GITHUB_EVENT_PATH
-      - run: echo ${{contains(github.event.pull_request.labels.*.name, 'bug')}}
