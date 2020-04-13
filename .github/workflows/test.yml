@@ -8,12 +8,5 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: >
-      github.event.pull_request &&
-      github.event.pull_request.body == '\upload' && (
-        github.event.comment.author_association == 'COLLABORATOR' ||
-        github.event.comment.author_association == 'MEMBER' ||
-        github.event.comment.author_association == 'OWNER'
-      )
     steps:
-      - run: cat $GITHUB_EVENT_PATH
+      - run: brew config
