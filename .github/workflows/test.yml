@@ -3,9 +3,13 @@ name: Test
 on:
   schedule:
     - cron:  '*/60 * * * *'
+  push:
+    branches:
+      - master
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - run: ls /home
       - run: brew config
