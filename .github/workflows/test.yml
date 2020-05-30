@@ -11,4 +11,5 @@ jobs:
     container:
       image: homebrew/ubuntu16.04:master
     steps:
+      - run: update-ca-certificates
       - run: curl 'https://www.apache.org/dyn/closer.lua?path=ant/binaries/apache-ant-1.10.8-bin.tar.xz&asjson=1'
