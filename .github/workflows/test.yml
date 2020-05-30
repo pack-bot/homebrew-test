@@ -9,8 +9,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: git config user.name
-      - run: git config user.email
-      - run: ls /home
-      - run: brew config
+      - run: curl 'https://www.apache.org/dyn/closer.lua?path=ant/binaries/apache-ant-1.10.8-bin.tar.xz&asjson=1'
