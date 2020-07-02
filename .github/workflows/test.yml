@@ -6,9 +6,11 @@ on:
       - master
     paths:
       - '**script**'
+  schedule:
+    - cron: '* * * * *'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: brew ls
+      - run: cat $GITHUB_EVENT_PATH
