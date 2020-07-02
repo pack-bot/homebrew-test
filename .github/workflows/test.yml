@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: "false"
-      - if: ${{!success()}}
+      - if: ${{failure()}}
         run: echo first
-      - if: ${{success()}}
+      - if: ${{failure()}}
         run: echo second
