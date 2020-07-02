@@ -9,5 +9,5 @@ jobs:
       - run: "false"
       - if: ${{!success()}}
         run: echo first
-      - if: ${{!success()}}
+      - if: ${{success()}}
         run: echo second
