@@ -1,12 +1,12 @@
 name: Test
 
-on: push
+on: repository_dispatch
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: "false"
+      - run: brew ls
       - if: ${{failure()}}
         run: echo first
       - if: ${{failure()}}
