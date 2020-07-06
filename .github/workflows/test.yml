@@ -3,10 +3,10 @@ name: Test
 on:
   repository_dispatch:
     types:
-      - 'Publish *'
+      - 'test'
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{github.event.client_payload.os}}
     steps:
       - run: cat $GITHUB_EVENT_PATH
