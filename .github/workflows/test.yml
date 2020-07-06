@@ -1,13 +1,12 @@
 name: Test
 
-on: repository_dispatch
+on:
+  repository_dispatch:
+    types:
+      - 'test*'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: brew ls
-      - if: ${{failure()}}
-        run: echo first
-      - if: ${{failure()}}
-        run: echo second
+      - run: cat $GITHUB_EVENT_PATH
