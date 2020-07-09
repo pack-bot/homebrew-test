@@ -1,14 +1,11 @@
-name: ${{github.event.inputs.test}}
+name: Test
 
 on:
-  workflow_dispatch:
-    inputs:
-      test:
-        description: desc
-        required: true
+  push:
+    branches: master
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: cat $GITHUB_EVENT_PATH
+      - run: docker buildx -h
