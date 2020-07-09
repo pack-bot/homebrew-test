@@ -1,12 +1,14 @@
 name: Test
 
 on:
-  repository_dispatch:
-    types:
-      - 'test'
+  workflow_dispatch:
+    inputs:
+      in:
+        description: desc
+        required: true
 
 jobs:
   test:
-    runs-on: ${{github.event.client_payload.os}}
+    runs-on: ubuntu-latest
     steps:
       - run: cat $GITHUB_EVENT_PATH
