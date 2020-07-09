@@ -3,7 +3,7 @@ name: Test
 on:
   workflow_dispatch:
     inputs:
-      in:
+      test:
         description: desc
         required: true
 
