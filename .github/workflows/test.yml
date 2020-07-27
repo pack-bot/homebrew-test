@@ -1,11 +1,18 @@
 name: Test
 
-on:
-  push:
-    branches: master
+on: pull_request
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: cat $GITHUB_EVENT_PATH
+      - uses: actions/checkout@v2
+      - uses: dawidd6/action-checkout-pr@v1
+        with:
+          pr: ${{github.event.pull_request.number}}
+      - uses: Homebrew/actions/git-user-config@master
+      - run: |
+          echo test > test12345
+          git add .
+          git commit -m "test"
+          git push
