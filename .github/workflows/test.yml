@@ -1,6 +1,6 @@
 name: Test
 
-on: pull_request
+on: repository_dispatch
 
 jobs:
   test:
