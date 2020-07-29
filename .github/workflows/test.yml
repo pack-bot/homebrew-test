@@ -1,18 +1,19 @@
 name: Test
 
-on: repository_dispatch
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: dawidd6/action-checkout-pr@v1
-        with:
-          pr: ${{github.event.pull_request.number}}
-      - uses: Homebrew/actions/git-user-config@master
+      - run: ln -s $(brew --repo homebrew/core) $GITHUB_WORKSPACE
+      - run: git log -3
       - run: |
-          echo test > test12345
-          git add .
-          git commit -m "test"
-          git push
+          git clean -ffdx
+          git remote set-url origin https://github.com/Homebrew/homebrew-core
+          git fetch --prune --force origin master
+          git checkout --force origin/master
+      - run: git log -3
