@@ -13,8 +13,8 @@ jobs:
           cd ..
           rmdir $GITHUB_WORKSPACE
           ln -s $(brew --repo homebrew/core) $GITHUB_WORKSPACE
-      - run: ls
-      - run: git log -3
+      - run: git branch -a
+      - run: git log -10
       - run: |
           git clean -ffdx
           git remote set-url origin https://github.com/Homebrew/homebrew-core
