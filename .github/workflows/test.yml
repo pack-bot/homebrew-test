@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          cd ..
           rmdir $GITHUB_WORKSPACE
           ln -s $(brew --repo homebrew/core) $GITHUB_WORKSPACE
       - run: ls
