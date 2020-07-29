@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: ln -sT $(brew --repo homebrew/core) $GITHUB_WORKSPACE
+      - run: ln -fsT $(brew --repo homebrew/core) $GITHUB_WORKSPACE
       - run: ls
       - run: git log -3
       - run: |
