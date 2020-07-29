@@ -1,0 +1,14 @@
+name: Composite Action
+description: Test
+inputs:
+  test:
+    description: Test
+    default: test
+outputs:
+  test: 
+    description: Test
+    value: ${{steps.test.outputs.test}}
+runs:
+    using: "composite"
+    steps:
+      - run: echo "test"
