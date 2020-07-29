@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: ln -s $(brew --repo homebrew/core) $GITHUB_WORKSPACE
+      - run: ls
       - run: git log -3
       - run: |
           git clean -ffdx
