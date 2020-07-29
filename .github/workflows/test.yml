@@ -1,15 +1,13 @@
 name: Test
 
 on:
-  workflow_dispatch:
-    inputs:
-      test:
-        description: Test
-        required: false
+  push:
+    branches:
+      - master
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo test
-        if: github.event.inputs.test
+      - uses: actions/checkout@v2
+      - uses: ./
