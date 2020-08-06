@@ -10,4 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: ruby --version
-      - run: brew ruby --version
+      - run: brew ruby -e "puts RUBY_VERSION"
+      - run: brew config
