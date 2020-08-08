@@ -9,6 +9,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: ruby --version
-      - run: brew ruby -e "puts RUBY_VERSION"
-      - run: brew config
+      - uses: Homebrew/actions/git-user-config@master
+      - run: |
+          touch file
+          git checkout -b test
+          git add file
+          git commit -m file
+          git checkout -
+          git push origin test:test
