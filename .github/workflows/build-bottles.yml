@@ -1,0 +1,30 @@
+name: Build bottles
+
+on:
+  pull_request:
+    paths:
+      - 'Formula/*'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: Set up Homebrew
+        id: setup
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Build bottles
+        env:
+          ROOT_URL: https://github.com/dawidd6/homebrew-test/releases/download/bottles
+        run: brew test-bot --only-formulae --root-url=$ROOT_URL
+      - name: Upload bottles
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: bottles
+          path: '*.bottle.*'
