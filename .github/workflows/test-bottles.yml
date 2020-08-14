@@ -5,5 +5,7 @@ on: workflow_dispatch
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      HOMEBREW_COLOR: 1
     steps:
-      - run: brew install -v $GITHUB_REPOSITORY/clone-org
+      - run: brew install $GITHUB_REPOSITORY/clone-org
