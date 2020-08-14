@@ -7,13 +7,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-    runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
     steps:
       - name: Set up Homebrew
         id: setup
@@ -21,7 +15,7 @@ jobs:
       - name: Build bottles
         env:
           ROOT_URL: https://github.com/dawidd6/homebrew-test/releases/download/bottles
-        run: brew test-bot --only-formulae --root-url=$ROOT_URL
+        run: brew test-bot --only-formulae --verbose --root-url=$ROOT_URL
       - name: Upload bottles
         if: always()
         uses: actions/upload-artifact@v2
