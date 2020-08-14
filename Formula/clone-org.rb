@@ -6,6 +6,12 @@ class CloneOrg < Formula
   license "MIT"
   head "https://github.com/caarlos0/clone-org.git"
 
+  bottle do
+    root_url "https://github.com/dawidd6/homebrew-test/releases/download/bottles"
+    cellar :any_skip_relocation
+    sha256 "895a3ed7238cf6e52ab352a488d3bb925a449e3e9d4ce1a3c05212516269efeb" => :x86_64_linux
+  end
+
   depends_on "go" => :build
 
   def install
