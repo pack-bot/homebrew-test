@@ -11,4 +11,7 @@ outputs:
 runs:
     using: composite
     steps:
-      - run: echo "test"
+      - run: echo test1
+        shell: bash
+      - run: echo test2
+        shell: bash
