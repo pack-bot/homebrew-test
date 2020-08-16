@@ -9,6 +9,6 @@ outputs:
     description: Test
     value: ${{steps.test.outputs.test}}
 runs:
-    using: "composite"
+    using: composite
     steps:
       - run: echo "test"
