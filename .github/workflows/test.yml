@@ -10,7 +10,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: which -a svn
-      - run: |
-          svn --version
-          /usr/bin/svn --version
+      - run: svn --version
+      - run: /usr/bin/svn --version
+      - run: brew ls
+      - run: ls -lh /usr/bin/svn
       - run: brew ruby -e "p Utils.svn_available?"
