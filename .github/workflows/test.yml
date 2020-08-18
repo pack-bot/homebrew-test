@@ -1,0 +1,12 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - run: brew ruby -e "Utils.svn_available?"
