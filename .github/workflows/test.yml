@@ -9,4 +9,4 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - run: brew ruby -e "Utils.svn_available?"
+      - run: brew ruby -e "p Utils.svn_available?"
