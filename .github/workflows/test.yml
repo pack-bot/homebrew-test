@@ -1,17 +1,13 @@
 name: Test
 
-on:
-  push:
-    branches:
-      - master
+on: pull_request
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - run: which -a svn
-      - run: svn --version
-      - run: /usr/bin/svn --version
-      - run: brew ls
-      - run: ls -lh /usr/bin/svn
-      - run: brew ruby -e "p Utils.svn_available?"
+      - run: echo $GITHUB_HEAD_REF
+      - run: echo $GITHUB_BASE_REF
+      - run: echo $GITHUB_REF
+      - run: echo $GITHUB_REPOSITORY_OWNER
+
